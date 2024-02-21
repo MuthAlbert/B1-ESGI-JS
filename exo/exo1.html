@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table, th, td {
+      border:1px solid black;
+    }
+</style>
+<body>
+    <h1 style="text-align: center;">Shopping list</h1>
+    <div style="text-align: center;">
+        <button onclick="addbasket('Pomme')">Pomme</button>
+        <button onclick="addbasket('Poire')">Poire</button>
+        <button onclick="addbasket('Banane')">Banane</button>
+        <button onclick="addbasket('Clémentine')">Clémentine</button>
+    </div>
+    <div style="text-align: center;">
+        <button onclick="addbasket('Orange')">Orange</button>
+        <button onclick="addbasket('Kiwi')">Kiwi</button>
+        <button onclick="addbasket('Ananas')">Ananas</button>
+        <button onclick="addbasket('Avocat')">Avocat</button>
+    </div>
+    <p>liste du panier : <br/></p>
+    <table>
+        <tr>
+            <td id="tab_id"></td>
+        </tr>
+    </table>
+    <!-- <button onclick="">Génération tableau</button> -->
+    
+
+    <script src="exo1.js"></script>
+</body>
+</html>
