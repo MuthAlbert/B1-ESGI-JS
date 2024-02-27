@@ -23,5 +23,3 @@ let newLength = fruits.push("Orange");
 let last = fruits.pop(); // supprime Orange (à la fin)
 // ["Apple", "Banana"];
 ```
-
-- 

@@ -34,3 +34,20 @@
 ```js
     git pull
 ```
+
+## Guide: add repo to Token
+
+Apres avoir généré le token et crée le repo:
+```js
+git remote add origine https://"tontoken"@"reposgithub"
+```
+
+Pour verifier que le Token prend bien en compte url du repo:
+```js
+git remote -v
+```
+
+Ensuite push la main:
+```js
+push -u origin main
+```
