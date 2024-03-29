@@ -1,0 +1,99 @@
+body {
+    --body-font-family: monospace;
+    --body-line-height: 1.4;
+    --body-bg: #5784BA;
+    font-family: var(--body-font-family);
+    line-height: var(--body-line-height);
+    background-color: var(--body-bg);
+}
+
+#site-content {
+    flex: 1 0 auto;
+    width: 100%;
+}
+
+.container {
+    content: "";
+    position: absolute;
+    background-color: #B6D8F2;
+    width: 72rem;
+    max-width: 100%;
+    /* margin: 0 auto; */
+    z-index: -10;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.container_center {
+    /* width: 80%; */
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+    color: #fff;;
+}
+
+.container_tab {
+    text-align: center;
+    margin: auto;
+    padding: 20px;
+}
+
+.pokemon_style {
+    display: none;
+    margin: auto;
+    width:175px;
+    height: 175px;
+}
+
+/* pokeball animation */
+.pokeball {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 192px;
+    height: 192px;
+    animation-duration: 40s;
+    background: radial-gradient(
+        white 16px,
+        black 17px 18px,
+        white 19px 24px,
+        black 25px 32px,
+        transparent 33px
+    ),
+    linear-gradient(to bottom, red 0 80px, black 81px 96px, white 97px 100%);
+    border-radius: 50%;
+    border: 8px solid black;
+    box-shadow: inset -16px -8px 0 0 rgba(0, 0, 0, 0.2);
+    animation: fall 0.5s ease-in-out 1s,
+      shake 1.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) 1.5s 9,
+      catch 0.5s ease-out 3.25s forwards;
+}
+
+/* Animation */
+@keyframes shake {
+    0% {
+      transform: translateX(0) rotate(0);
+    }
+    20% {
+      transform: translateX(-10px) rotate(-20deg);
+    }
+    30% {
+      transform: translateX(10px) rotate(20deg);
+    }
+    50% {
+      transform: translateX(-10px) rotate(-10deg);
+    }
+    60% {
+      transform: translateX(10px) rotate(10deg);
+    }
+    100% {
+      transform: translateX(0) rotate(0);
+    }
+}
+
+.card {
+  padding: 20px;
+}
