@@ -1,3 +1,2 @@
-# Hello everyone!
+This project is a Pokemon Application based on the API provided by https://pokeapi.co/.
 
-I'm a student from ESGI Lyon and this is my repository for JavaScript lesson !
