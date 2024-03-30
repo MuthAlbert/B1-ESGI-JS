@@ -17,13 +17,13 @@ async function pokemonData() {
         document.getElementById("pokemonN").innerHTML = pokemonN;
 
         const pokemonWeight = data.weight;
-        document.getElementById("pokemonWeight").innerHTML = pokemonWeight;
+        document.getElementById("pokemonWeight").innerHTML = pokemonWeight/10;
 
         const pokemonTypes = data.types.map(type => type.type.name).join(' / ');
         document.getElementById("pokemonTypes").innerHTML = pokemonTypes;
 
         const pokemonHeight = data.height;
-        document.getElementById("pokemonHeight").innerHTML = pokemonHeight;
+        document.getElementById("pokemonHeight").innerHTML = pokemonHeight/10;
 
         const pokemonId = data.id;
         document.getElementById("pokemonId").innerHTML = pokemonId;
@@ -31,67 +31,23 @@ async function pokemonData() {
         const pokemonAbi = data.abilities.map(ability => ability.ability.name).join(' / ');
         document.getElementById("pokemonAbi").innerHTML = pokemonAbi;
 
-        const pokemonStatsHp = data.stats.find(stat => stat.stat.name === 'hp');
-        let hp = '';
-        if (pokemonStatsHp) {
-            hp = pokemonStatsHp.base_stat;
-        }
-        document.getElementById("pokemonStatsHp").innerHTML = `${hp}`;
-        const hpBar = document.getElementById("hpProgressBar");
-        hpBar.value = hp;
-        hpBar.max = 255;
-            
-        const pokemonStatsAtk = data.stats.find(stat => stat.stat.name === 'attack');
-        let atk = '';
-        if (pokemonStatsAtk) {
-            atk = pokemonStatsAtk.base_stat;
-        }
-        document.getElementById("pokemonStatsAtk").innerHTML = `${atk}`;
-        const atkBar = document.getElementById("atkProgressBar");
-        atkBar.value = atk;
-        atkBar.max = 190;
-
-        const pokemonStatsDef = data.stats.find(stat => stat.stat.name === 'defense');
-        let def = '';
-        if (pokemonStatsDef) {
-            def = pokemonStatsDef.base_stat;
-        }
-        document.getElementById("pokemonStatsDef").innerHTML = `${def}`;
-        const defBar = document.getElementById("defProgressBar");
-        defBar.value = def;
-        defBar.max = 230;
-
-        const pokemonStatsSpAtk = data.stats.find(stat => stat.stat.name === 'special-attack');
-        let spAtk = '';
-        if (pokemonStatsSpAtk) {
-            spAtk = pokemonStatsSpAtk.base_stat;
-        }
-        document.getElementById("pokemonStatsSpAtk").innerHTML = `${spAtk}`;
-        const spAtkBar = document.getElementById("spAtkProgressBar");
-        spAtkBar.value = spAtk;
-        spAtkBar.max = 194;
-
-        const pokemonStatsSpDef = data.stats.find(stat => stat.stat.name === 'special-defense');
-        let spDef = '';
-        if (pokemonStatsSpDef) {
-            spDef = pokemonStatsSpDef.base_stat;
-        }
-        document.getElementById("pokemonStatsSpDef").innerHTML = `${spDef}`;
-        const spDefBar = document.getElementById("spDefProgressBar");
-        spDefBar.value = spDef;
-        spDefBar.max = 230;
-
-        const pokemonStatsSpeed = data.stats.find(stat => stat.stat.name === 'speed');
-        let speed = '';
-        if (pokemonStatsSpeed) {
-            speed = pokemonStatsSpeed.base_stat;
-        }
-        document.getElementById("pokemonStatsSpeed").innerHTML = `${speed}`;
-        const speedBar = document.getElementById("speedProgressBar");
-        speedBar.value = speed;
-        speedBar.max = 200;
+        updateStat('hp', data, 'pokemonStatsHp', 'hpProgressBar', 255);
+        updateStat('attack', data, 'pokemonStatsAtk', 'atkProgressBar', 190);
+        updateStat('defense', data, 'pokemonStatsDef', 'defProgressBar', 230);
+        updateStat('special-attack', data, 'pokemonStatsSpAtk', 'spAtkProgressBar', 194);
+        updateStat('special-defense', data, 'pokemonStatsSpDef', 'spDefProgressBar', 230);
+        updateStat('speed', data, 'pokemonStatsSpeed', 'speedProgressBar', 200);
     }
     catch(error) {
         console.log(error);
     }
+}
+
+function updateStat(statName, data, statElementId, progressBarId, maxStatValue) {   // cette fonction prend 5 paramètres pour ensuite pouvoir les ressortirent plus tard 
+    const stat = data.stats.find(stat => stat.stat.name === statName);  // stat vas chercher dans le filtre 'stat' les noms des stats
+    const value = stat ? stat.base_stat : '';   // ici value n'a pas de valeur static, elle changera en fonction des stats trouvé au moment donnée
+    document.getElementById(statElementId).innerHTML = value;
+    const progressBar = document.getElementById(progressBarId);
+    progressBar.value = value;
+    progressBar.max = maxStatValue;
 }
