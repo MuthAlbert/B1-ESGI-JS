@@ -43,11 +43,52 @@ async function pokemonData() {
     }
 }
 
-function updateStat(statName, data, statElementId, progressBarId, maxStatValue) {   // cette fonction prend 5 paramètres pour ensuite pouvoir les ressortirent plus tard 
-    const stat = data.stats.find(stat => stat.stat.name === statName);  // stat vas chercher dans le filtre 'stat' les noms des stats
-    const value = stat ? stat.base_stat : '';   // ici value n'a pas de valeur static, elle changera en fonction des stats trouvé au moment donnée
+function updateStat(statName, data, statElementId, progressBarId, maxStatValue) {   // Cette fonction prend 5 paramètres pour ensuite pouvoir les ressortir plus tard.
+    const stat = data.stats.find(stat => stat.stat.name === statName);  // "Stat" va chercher dans le filtre 'stat' les noms des statistiques.
+    const value = stat ? stat.base_stat : '';   // Ici, "value" n'a pas de valeur statique, elle changera en fonction des statistiques trouvées au moment donné.
     document.getElementById(statElementId).innerHTML = value;
     const progressBar = document.getElementById(progressBarId);
     progressBar.value = value;
     progressBar.max = maxStatValue;
 }
+
+async function displayPokemon() {
+    try {
+        const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1030');
+        if (!response.ok) {
+            throw new Error('Could not fetch Pokemon data');
+        }
+        const data = await response.json();
+        const allPokemon = data.results;
+
+        const pokedexDiv = document.getElementById('pokedex');
+        for (const pokemon of allPokemon) {
+            const response = await fetch(pokemon.url);
+            const data = await response.json();
+
+            // const pokemonN = data.name;
+            // document.getElementById("pokemonN").innerHTML = pokemonN;
+
+            // const pokemonId = data.id;
+            // document.getElementById("pokemonId").innerHTML = pokemonId;
+
+            // const pokemonSprite = data.sprites.front_default;
+            // const imgElement = document.getElementById("pokemonSprite")
+            // imgElement.src = pokemonSprite;
+            // imgElement.style.display = "block";
+
+            const pokemonDiv = document.createElement('div');
+            pokemonDiv.classList.add('pokemon');
+            pokemonDiv.innerHTML = `
+                <h2>${data.name}</h2>
+                <img src="${data.sprites.front_default}" alt="${data.name}">
+                <p>ID: ${data.id}</p>
+            `;
+            pokedexDiv.appendChild(pokemonDiv);
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+displayPokemon();
