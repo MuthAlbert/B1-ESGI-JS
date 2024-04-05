@@ -1,3 +1,5 @@
+![alt text](image.png)
+
 Ce projet est une application Pokémon basée sur l'API fournie par https://pokeapi.co/.
 
 ### 1- Comment structurer une page HTML pour afficher une liste de Pokémon et un formulaire de recherche ? 
