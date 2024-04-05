@@ -1,6 +1,11 @@
+<div style="width:40%; margin: auto; text-align: center">
+
 ![alt text](img/image.png)
 
 Ce projet est une application Pokémon basée sur l'API fournie par https://pokeapi.co/.
+</div>
+
+
 
 ### 1- Comment structurer une page HTML pour afficher une liste de Pokémon et un formulaire de recherche ? 
 Pour le formulaire de recherche j'ai utilisé le getElementById pour recupéré les données et ensuite les utilisés avec id en html.
@@ -22,6 +27,14 @@ La documentation de l'API PokeAPI pour comprendre les différentes filtres dispo
 
 ### 4- Comment implémenter une fonctionnalité de recherche pour trouver des Pokémon par leur numéro ?
 La fonction pokemonData(), on récupére le nom du Pokémon à rechercher à partir de l'input avec l'ID pokemonName. Ensuite on utilise l'inplut pour rechercher un Pokémon par son nom ou son ID.
+```js
+const pokemonName = document.getElementById("pokemonName").value.toLowerCase();
+const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
+```
+```html
+<input type="text" id="pokemonName" placeholder="Enter name or id">
+<button onclick="pokemonData();">Search</button><br>
+```
 
 ### 5- Comment gérer les erreurs, comme une recherche qui ne retourne aucun résultat ?
 Dans la gestion d'erreur catch(), on peux afficher un message à l'utilisateur pour l'informer que la recherche n'a retourné aucun résultat.
