@@ -14,7 +14,6 @@ body {
 
 .container {
   content: "";
-  position: absolute;
   background-color: #B6D8F2;
   width: 72rem;
   max-width: 100%;
@@ -22,7 +21,6 @@ body {
   z-index: -10;
   top: 0;
   right: 0;
-  /* bottom: 0; */
   left: 0;
 }
 
@@ -34,11 +32,9 @@ body {
 }
 
 .container_center_pokedex {
-  /* width: 80%; */
   margin: auto;
   text-align: center;
   padding: 20px;
-  /* color: #fff;; */
 }
 
 .container_tab {

@@ -65,19 +65,8 @@ async function displayPokemon() {
         for (const pokemon of allPokemon) {
             const response = await fetch(pokemon.url);
             const data = await response.json();
-
-            // const pokemonN = data.name;
-            // document.getElementById("pokemonN").innerHTML = pokemonN;
-
-            // const pokemonId = data.id;
-            // document.getElementById("pokemonId").innerHTML = pokemonId;
-
-            // const pokemonSprite = data.sprites.front_default;
-            // const imgElement = document.getElementById("pokemonSprite")
-            // imgElement.src = pokemonSprite;
-            // imgElement.style.display = "block";
-
             const pokemonDiv = document.createElement('div');
+
             pokemonDiv.classList.add('pokemon');
             pokemonDiv.innerHTML = `
                 <h2>${data.name}</h2>
