@@ -1,4 +1,4 @@
-![alt text](image.png)
+![alt text](img/image.png)
 
 Ce projet est une application Pokémon basée sur l'API fournie par https://pokeapi.co/.
 
